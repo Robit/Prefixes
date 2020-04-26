@@ -2,3 +2,9 @@ name: Prefixes
 main: io.github.rm2023.Prefixes.Main
 version: 1.0
 api-version: "1.14"
+depend: [LuckPerms]
+commands:
+   prefix:
+      description: Sets your prefix
+      usage: /prefix <prefix> Use /prefix clear to clear it.
+      permission: prefixes.set
