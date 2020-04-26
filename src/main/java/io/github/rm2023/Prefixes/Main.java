@@ -25,6 +25,7 @@ public class Main extends JavaPlugin {
     private class PrefixCommand implements CommandExecutor {
         private static final int PRIORITY = 69;
         private static final int LIMIT = 25;
+        private final String[] BLACKLIST = { "owner", "mod", "staff", "manager", "admin", "helper", "trainee", "founder", "youtuber", "official", "president" };
 
         @Override
         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -41,7 +42,13 @@ public class Main extends JavaPlugin {
                 sender.sendMessage(ChatColor.RED + "Please enter a string that's shorter than " + LIMIT + " characters.");
                 return true;
             }
-            if (prefix.toLowerCase().contains("owner")) {
+            boolean blacklisted = false;
+            for (String s : BLACKLIST) {
+                if (prefix.replaceAll("&.", "").toLowerCase().contains(s)) {
+                    blacklisted = true;
+                }
+            }
+            if (blacklisted) {
                 sender.sendMessage(ChatColor.RED + "Abuse of this command will lead to its revocation.");
                 return true;
             }
@@ -55,7 +62,7 @@ public class Main extends JavaPlugin {
                 sender.sendMessage(ChatColor.GREEN + "Your prefix has been set.");
             }
             else {
-                sender.sendMessage(ChatColor.GREEN + "Your prefix has been cleared.");
+                sender.sendMessage(ChatColor.GREEN + "Your prefix has been reset.");
             }
             LuckPermsProvider.get().getUserManager().saveUser(p);
             return true;
