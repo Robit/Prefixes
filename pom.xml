@@ -10,6 +10,11 @@
         <id>spigot-repo</id>
         <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
+    <repository>
+        <id>mccommandapi</id>
+        <url>https://raw.githubusercontent.com/JorelAli/1.13-Command-API/mvn-repo/1.13CommandAPI/</url>
+    </repository>
+  </repositories>
   
       <build>
         <defaultGoal>clean package</defaultGoal>
@@ -57,7 +62,7 @@
            <version>1.14.4-R0.1-SNAPSHOT</version>
            <scope>provided</scope>
     </dependency>
-	<dependency>
+    <dependency>
         <groupId>net.luckperms</groupId>
         <artifactId>api</artifactId>
         <version>5.0</version>
